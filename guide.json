@@ -1,0 +1,107 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "airi",
+    "nameCn": "AIRI",
+    "repoName": "airi-deploy-guide",
+    "oneLiner": "50.8k stars，MIT，可自托管的数字生命，支持实时语音、Live2D / VRM 与游戏陪玩",
+    "officialRepo": "https://github.com/moeru-ai/airi",
+    "officialDocs": "https://airi.moeru.ai/docs/",
+    "stars": "50.8k",
+    "license": "MIT",
+    "highlights": [
+      "50.8k stars：2024-12 建仓，长期占据趋势榜",
+      "多端：Windows、macOS、Linux、Android、iOS、浏览器",
+      "实时语音：语音识别 + 语音合成，可打断对话",
+      "形象驱动：支持 Live2D 与 VRM 模型",
+      "游戏陪玩：Minecraft、Factorio 已有独立子项目",
+      "自托管：模型与记忆都在自己手里"
+    ],
+    "mcpSupport": "AIRI 不是 MCP server，通过插件系统扩展能力；本仓库只负责安装与配置，不注册 MCP。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-27",
+    "verification": [
+      [
+        "Release v0.12.0 的 Windows 安装包 SHA256 712152fb...1fade6 与 Release 记录一致（439.9 MB）",
+        "已核对 2026-10-27"
+      ],
+      [
+        "Release v0.12.0 的 macOS dmg SHA256 ca547a39...312179 与 Release 记录一致（548.1 MB）",
+        "已核对 2026-10-27"
+      ],
+      [
+        "Release v0.12.0 的 Linux deb SHA256 6a6644d6...101a486 与 Release 记录一致（437 MB）",
+        "已核对 2026-10-27"
+      ],
+      [
+        "README 确认 winget / scoop / brew / 浏览器四种安装方式",
+        "已核对 2026-10-27"
+      ],
+      [
+        "未实测安装与语音链路",
+        "说明 2026-10-27"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "if [ \"$(uname -s)\" = \"Darwin\" ]; then url=https://github.com/moeru-ai/airi/releases/download/v0.12.0/AIRI-0.12.0-darwin-arm64.dmg ; want=ca547a39394594f2b08d4811454063a943c9c30c8c82ab84cfa80647e8632179 ; curl -fL -o airi.dmg \"$url\" ; echo \"$want  airi.dmg\" | shasum -a 256 -c - ; open airi.dmg ; else url=https://github.com/moeru-ai/airi/releases/download/v0.12.0/AIRI-0.12.0-linux-amd64.deb ; want=6a6644d6c586e914a96d4416758ebfaddfb8d240ccc3c35502249983f101a486 ; curl -fL -o airi.deb \"$url\" ; echo \"$want  airi.deb\" | sha256sum -c - ; sudo dpkg -i airi.deb || sudo apt-get install -f -y ; fi",
+        "echo '安装完成：启动 AIRI，在设置里配置模型与语音服务'"
+      ],
+      "stepsPs": [
+        "$exe = 'AIRI-0.12.0-windows-x64-setup.exe'",
+        "curl.exe -L --fail -o $exe \"https://github.com/moeru-ai/airi/releases/download/v0.12.0/$exe\"",
+        "if ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne '712152fbfe85b80d224b9bd2c182ab75092d4044a9118c87693f47befd1fade6') { throw 'SHA256 校验失败，请重新下载' }",
+        "Write-Host 'SHA256 校验通过'",
+        "Start-Process -FilePath (Join-Path $PWD $exe)"
+      ],
+      "source": "https://github.com/moeru-ai/airi/releases/tag/v0.12.0"
+    },
+    "pitfalls": [
+      "装完没声音：先检查麦克风权限与系统输入设备",
+      "模型 401：Base URL 与 Key 要匹配，注意是否带 `/v1`",
+      "本地模型爆显存：换更小模型或改用云端接口",
+      "对话很慢：语音链路串行，先把 TTS 换成本地",
+      "形象不显示：确认模型格式与资源目录正确",
+      "升级后配置丢失：升级前备份应用配置目录"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/airi-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/airi-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "AIRI 部署",
+    "AIRI 安装 教程",
+    "数字生命 开源",
+    "AI 虚拟伴侣",
+    "实时语音 对话",
+    "Live2D AI",
+    "VRM 虚拟主播",
+    "Minecraft AI 陪玩",
+    "AIRI 中文",
+    "自托管 AI 伴侣"
+  ],
+  "topics": [
+    "ai",
+    "vtuber",
+    "live2d",
+    "vrm",
+    "voice-chat",
+    "self-hosted"
+  ]
+}

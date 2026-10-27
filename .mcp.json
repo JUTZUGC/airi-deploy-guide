@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "airi-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
