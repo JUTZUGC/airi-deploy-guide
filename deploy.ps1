@@ -1,6 +1,6 @@
 ﻿# AIRI 桌面安装包脚本（第三方指南）——按官方文档封装
 # 官方文档：https://airi.moeru.ai/docs/
-# 更新日期：2026-10-27
+# 更新日期：2026-10-28
 # 类型：binary
 $ErrorActionPreference = 'Stop'
 Set-Location -Path $PSScriptRoot
@@ -10,9 +10,9 @@ if (-not (Get-Command curl.exe -ErrorAction SilentlyContinue)) { throw '需要�
 New-Item -ItemType Directory -Force -Path .download | Out-Null
 Set-Location -Path .download
 
-$exe = 'AIRI-0.12.0-windows-x64-setup.exe'
-curl.exe -L --fail -o $exe "https://github.com/moeru-ai/airi/releases/download/v0.12.0/$exe"
-if ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne '712152fbfe85b80d224b9bd2c182ab75092d4044a9118c87693f47befd1fade6') { throw 'SHA256 校验失败，请重新下载' }
+$exe = 'AIRI-0.13.0-windows-x64-setup.exe'
+curl.exe -L --fail -o $exe "https://github.com/moeru-ai/airi/releases/download/v0.13.0/$exe"
+if ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne 'c958373e2ea415424e4f9d147f3cc9ffa30f29b0bd5d058ebea7f46f8006e18a') { throw 'SHA256 校验失败，请重新下载' }
 Write-Host 'SHA256 校验通过'
 Start-Process -FilePath (Join-Path $PWD $exe)
 

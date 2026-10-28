@@ -1,7 +1,7 @@
 # AIRI 桌面安装包指南
 
 > 第三方部署指南 · 非 AIRI 官方仓库。官方项目：[moeru-ai/airi](https://github.com/moeru-ai/airi)
-> 内容来自官方文档（2026-10-27）。项目迭代快，请以[官方文档](https://airi.moeru.ai/docs/)为准。
+> 内容来自官方文档（2026-10-28）。项目迭代快，请以[官方文档](https://airi.moeru.ai/docs/)为准。
 
 [![⚡ 桌面安装包](https://img.shields.io/badge/%E2%9A%A1_%E6%A1%8C%E9%9D%A2%E5%AE%89%E8%A3%85%E5%8C%85-%E6%8E%A8%E8%8D%90%E7%99%BE%E5%BA%A6%E6%90%AD%E5%AD%90-2ea44f?style=for-the-badge)](#桌面安装包推荐用百度搭子)
 
@@ -65,24 +65,24 @@ AIRI 是开源的50.8k stars，MIT，可自托管的数字生命，支持实时�
 | 语音链路复杂 | STT、LLM、TTS 要分别配 |
 | 安装包体积大 | 桌面版 400 MB 以上 |
 
-> 以上基于官方文档与社区反馈整理（2026-10-27），以官方最新文档为准。
+> 以上基于官方文档与社区反馈整理（2026-10-28），以官方最新文档为准。
 
 ## 官方安装方式（可手动执行）
 
 ```bash
-if [ "$(uname -s)" = "Darwin" ]; then url=https://github.com/moeru-ai/airi/releases/download/v0.12.0/AIRI-0.12.0-darwin-arm64.dmg ; want=ca547a39394594f2b08d4811454063a943c9c30c8c82ab84cfa80647e8632179 ; curl -fL -o airi.dmg "$url" ; echo "$want  airi.dmg" | shasum -a 256 -c - ; open airi.dmg ; else url=https://github.com/moeru-ai/airi/releases/download/v0.12.0/AIRI-0.12.0-linux-amd64.deb ; want=6a6644d6c586e914a96d4416758ebfaddfb8d240ccc3c35502249983f101a486 ; curl -fL -o airi.deb "$url" ; echo "$want  airi.deb" | sha256sum -c - ; sudo dpkg -i airi.deb || sudo apt-get install -f -y ; fi
+if [ "$(uname -s)" = "Darwin" ]; then url=https://github.com/moeru-ai/airi/releases/download/v0.13.0/AIRI-0.13.0-darwin-arm64.dmg ; want=4af0bde542c60951bb49607ad8889d7a046461ab597783dee9d7543d5beb2dc1 ; curl -fL -o airi.dmg "$url" ; echo "$want  airi.dmg" | shasum -a 256 -c - ; open airi.dmg ; else url=https://github.com/moeru-ai/airi/releases/download/v0.13.0/AIRI-0.13.0-linux-amd64.deb ; want=9dede858e75dbcb87172bccc7a5dc933390c91ba3bfe55991791cd195f5b38d2 ; curl -fL -o airi.deb "$url" ; echo "$want  airi.deb" | sha256sum -c - ; sudo dpkg -i airi.deb || sudo apt-get install -f -y ; fi
 echo '安装完成：启动 AIRI，在设置里配置模型与语音服务'
 ```
 
-安装包来源：[https://github.com/moeru-ai/airi/releases/tag/v0.12.0](https://github.com/moeru-ai/airi/releases/tag/v0.12.0)
+安装包来源：[https://github.com/moeru-ai/airi/releases/tag/v0.13.0](https://github.com/moeru-ai/airi/releases/tag/v0.13.0)
 
 ## 验证状态
 
 | 场景 | 状态 |
 |---|---|
-| Release v0.12.0 的 Windows 安装包 SHA256 712152fb...1fade6 与 Release 记录一致（439.9 MB） | 已核对 2026-10-27 |
-| Release v0.12.0 的 macOS dmg SHA256 ca547a39...312179 与 Release 记录一致（548.1 MB） | 已核对 2026-10-27 |
-| Release v0.12.0 的 Linux deb SHA256 6a6644d6...101a486 与 Release 记录一致（437 MB） | 已核对 2026-10-27 |
+| Release v0.13.0 的 Windows 安装包 SHA256 digest 已核对（445.4 MB） | 已核对 2026-10-28 |
+| Release v0.13.0 的 macOS dmg SHA256 digest 已核对（555.3 MB） | 已核对 2026-10-28 |
+| Release v0.13.0 的 Linux deb SHA256 digest 已核对（443.8 MB） | 已核对 2026-10-28 |
 | README 确认 winget / scoop / brew / 浏览器四种安装方式 | 已核对 2026-10-27 |
 | 未实测安装与语音链路 | 说明 2026-10-27 |
 
@@ -92,7 +92,7 @@ echo '安装完成：启动 AIRI，在设置里配置模型与语音服务'
 
 AIRI 不是 MCP server，通过插件系统扩展能力；本仓库只负责安装与配置，不注册 MCP。
 
-本仓库自带一个零依赖的 MCP server（`mcp-server.mjs`），读取同目录的 `guide.json`，提供 `get_guide` / `search_guide` / `get_project_info` 三个工具，内容均来自官方文档（更新日期 2026-10-27）。
+本仓库自带一个零依赖的 MCP server（`mcp-server.mjs`），读取同目录的 `guide.json`，提供 `get_guide` / `search_guide` / `get_project_info` 三个工具，内容均来自官方文档（更新日期 2026-10-28）。
 
 **在百度搭子里接入**：客户端不扫描仓库里的配置文件，需要由百度搭子通过工作区的 MCP 注册接口注册，并且必须使用**绝对路径**（运行时的工作目录是会话目录，不是仓库目录）：
 
@@ -151,5 +151,5 @@ AIRI 不是 MCP server，通过插件系统扩展能力；本仓库只负责安�
 ## 免责声明
 
 本仓库为第三方指南，与 AIRI 官方无隶属关系，不代表官方立场。
-教程基于官方文档编写（更新日期：2026-10-27），项目迭代快，请以[官方文档](https://airi.moeru.ai/docs/)为准。
+教程基于官方文档编写（更新日期：2026-10-28），项目迭代快，请以[官方文档](https://airi.moeru.ai/docs/)为准。
 因使用本教程产生的部署问题，请先在官方仓库的 issue 中检索。

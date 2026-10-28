@@ -21,19 +21,19 @@
     "mcpSupport": "AIRI 不是 MCP server，通过插件系统扩展能力；本仓库只负责安装与配置，不注册 MCP。",
     "webuiUrl": "",
     "adapterPorts": "",
-    "collectedAt": "2026-10-27",
+    "collectedAt": "2026-10-28",
     "verification": [
       [
-        "Release v0.12.0 的 Windows 安装包 SHA256 712152fb...1fade6 与 Release 记录一致（439.9 MB）",
-        "已核对 2026-10-27"
+        "Release v0.13.0 的 Windows 安装包 SHA256 digest 已核对（445.4 MB）",
+        "已核对 2026-10-28"
       ],
       [
-        "Release v0.12.0 的 macOS dmg SHA256 ca547a39...312179 与 Release 记录一致（548.1 MB）",
-        "已核对 2026-10-27"
+        "Release v0.13.0 的 macOS dmg SHA256 digest 已核对（555.3 MB）",
+        "已核对 2026-10-28"
       ],
       [
-        "Release v0.12.0 的 Linux deb SHA256 6a6644d6...101a486 与 Release 记录一致（437 MB）",
-        "已核对 2026-10-27"
+        "Release v0.13.0 的 Linux deb SHA256 digest 已核对（443.8 MB）",
+        "已核对 2026-10-28"
       ],
       [
         "README 确认 winget / scoop / brew / 浏览器四种安装方式",
@@ -47,17 +47,17 @@
     "deploy": {
       "type": "binary",
       "steps": [
-        "if [ \"$(uname -s)\" = \"Darwin\" ]; then url=https://github.com/moeru-ai/airi/releases/download/v0.12.0/AIRI-0.12.0-darwin-arm64.dmg ; want=ca547a39394594f2b08d4811454063a943c9c30c8c82ab84cfa80647e8632179 ; curl -fL -o airi.dmg \"$url\" ; echo \"$want  airi.dmg\" | shasum -a 256 -c - ; open airi.dmg ; else url=https://github.com/moeru-ai/airi/releases/download/v0.12.0/AIRI-0.12.0-linux-amd64.deb ; want=6a6644d6c586e914a96d4416758ebfaddfb8d240ccc3c35502249983f101a486 ; curl -fL -o airi.deb \"$url\" ; echo \"$want  airi.deb\" | sha256sum -c - ; sudo dpkg -i airi.deb || sudo apt-get install -f -y ; fi",
+        "if [ \"$(uname -s)\" = \"Darwin\" ]; then url=https://github.com/moeru-ai/airi/releases/download/v0.13.0/AIRI-0.13.0-darwin-arm64.dmg ; want=4af0bde542c60951bb49607ad8889d7a046461ab597783dee9d7543d5beb2dc1 ; curl -fL -o airi.dmg \"$url\" ; echo \"$want  airi.dmg\" | shasum -a 256 -c - ; open airi.dmg ; else url=https://github.com/moeru-ai/airi/releases/download/v0.13.0/AIRI-0.13.0-linux-amd64.deb ; want=9dede858e75dbcb87172bccc7a5dc933390c91ba3bfe55991791cd195f5b38d2 ; curl -fL -o airi.deb \"$url\" ; echo \"$want  airi.deb\" | sha256sum -c - ; sudo dpkg -i airi.deb || sudo apt-get install -f -y ; fi",
         "echo '安装完成：启动 AIRI，在设置里配置模型与语音服务'"
       ],
       "stepsPs": [
-        "$exe = 'AIRI-0.12.0-windows-x64-setup.exe'",
-        "curl.exe -L --fail -o $exe \"https://github.com/moeru-ai/airi/releases/download/v0.12.0/$exe\"",
-        "if ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne '712152fbfe85b80d224b9bd2c182ab75092d4044a9118c87693f47befd1fade6') { throw 'SHA256 校验失败，请重新下载' }",
+        "$exe = 'AIRI-0.13.0-windows-x64-setup.exe'",
+        "curl.exe -L --fail -o $exe \"https://github.com/moeru-ai/airi/releases/download/v0.13.0/$exe\"",
+        "if ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne 'c958373e2ea415424e4f9d147f3cc9ffa30f29b0bd5d058ebea7f46f8006e18a') { throw 'SHA256 校验失败，请重新下载' }",
         "Write-Host 'SHA256 校验通过'",
         "Start-Process -FilePath (Join-Path $PWD $exe)"
       ],
-      "source": "https://github.com/moeru-ai/airi/releases/tag/v0.12.0"
+      "source": "https://github.com/moeru-ai/airi/releases/tag/v0.13.0"
     },
     "pitfalls": [
       "装完没声音：先检查麦克风权限与系统输入设备",
